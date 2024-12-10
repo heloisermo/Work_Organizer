@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #de8def;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #de8def;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.todo-section {
+    flex: 2;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todo-section h2 {
+    margin-bottom: 1rem;
+}
+
+.todo-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.todo-form input, .todo-form button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.todo-form button {
+    background-color: #de8def;
+    color: white;
+    cursor: pointer;
+}
+
+.todo-form button:hover {
+    background-color: #de8def;
+}
+
+.todo-list {
+    list-style: none;
+}
+
+.todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.todo-list li .actions button {
+    margin-left: 0.5rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+}
+
+.todo-list li .actions button:hover {
+    background-color: #e53935;
+}
+
+.schedule-section {
+    flex: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-section h2 {
+    margin-bottom: 1rem;
+}
+
+.schedule {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+}
+
+.hour {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}

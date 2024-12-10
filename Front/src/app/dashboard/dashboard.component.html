@@ -1,0 +1,46 @@
+
+    <header>
+        <h1>Mon Tableau de Bord</h1>
+        <nav>
+            <a href="#">Mes Projets Partagés</a>
+            <a href="#">Modifier Mes Informations</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="todo-section">
+            <h2>To-Do List</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Add a new task" [(ngModel)]="newTask" class="form-control">
+            <button (click)="addTask()" class="btn btn-primary mt-2">Add Task</button>
+            </div>
+            <ul class="list-group mt-3">
+                <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
+                    <span [class.completed]="task.completed">{{ task.name }}</span>
+                    <div>
+                        <button (click)="toggleTask(task)" class="btn btn-sm btn-success">
+                            {{ task.completed ? 'Undo' : 'Complete' }}
+                        </button>
+                        <button (click)="deleteTask(task)" class="btn btn-sm btn-danger">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="schedule-section">
+            <h2>Planning</h2>
+            <div class="schedule">
+                <div class="hour">08:00</div>
+                <div class="hour">09:00</div>
+                <div class="hour">10:00</div>
+                <div class="hour">11:00</div>
+                <div class="hour">12:00</div>
+                <div class="hour">13:00</div>
+                <div class="hour">14:00</div>
+                <div class="hour">15:00</div>
+                <div class="hour">16:00</div>
+                <div class="hour">17:00</div>
+                <div class="hour">18:00</div>
+            </div>
+        </section>
+    </main>

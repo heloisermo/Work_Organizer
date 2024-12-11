@@ -13,4 +13,6 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 export class SignUpComponent {
   email: string = '';
   password: string = '';
+  pseudo: string = '';
+  firstname: string = '';
 }

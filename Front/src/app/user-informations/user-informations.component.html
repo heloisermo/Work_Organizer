@@ -1,0 +1,58 @@
+<header>
+    <h1>Informations Utilisateur</h1>
+    <nav>
+      <a href="#">Tableau de Bord</a>
+      <a routerLink="/dashboard">Retour au Dashboard</a>
+      <a routerLink="/sign-in">Se Déconnecter</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="user-info-section">
+      <h2>Modifier vos informations</h2>
+      
+      <form (submit)="updateUserInfo()" class="user-info-form">
+        
+        <!-- Pseudo -->
+        <div class="form-group">
+          <label for="username">Pseudo</label>
+          <input 
+            type="text" 
+            id="username" 
+            [(ngModel)]="userInfo.username" 
+            name="username" 
+            class="form-control" 
+            placeholder="Entrez votre pseudo">
+        </div>
+  
+        <!-- Prénom -->
+        <div class="form-group">
+          <label for="firstname">Prénom</label>
+          <input 
+            type="text" 
+            id="firstname" 
+            [(ngModel)]="userInfo.firstname" 
+            name="firstname" 
+            class="form-control" 
+            placeholder="Entrez votre prénom">
+        </div>
+  
+        <!-- Mot de passe -->
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input 
+            type="password" 
+            id="password" 
+            [(ngModel)]="userInfo.password" 
+            name="password" 
+            class="form-control" 
+            placeholder="Entrez un nouveau mot de passe">
+        </div>
+  
+        <!-- Bouton de validation -->
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+      </form>
+  
+    </section>
+  </main>
+  

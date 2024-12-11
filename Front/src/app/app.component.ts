@@ -7,6 +7,7 @@ import { routes } from './app.routes';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserInformationComponent } from './user-informations/user-informations.component';
 
 @Component({
   selector: 'app-root',

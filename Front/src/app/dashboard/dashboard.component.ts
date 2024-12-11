@@ -7,6 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { RouterModule } from '@angular/router';
 
+
 interface CalendarEvent {
   title: string;
   start: string;

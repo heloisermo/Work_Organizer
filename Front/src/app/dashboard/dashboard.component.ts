@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FullCalendarModule } from '@fullcalendar/angular'; // Module FullCalendar
-import timeGridPlugin from '@fullcalendar/timegrid'; // Plugin vue calendrier en grille horaire
+import { FullCalendarModule } from '@fullcalendar/angular'; 
+import timeGridPlugin from '@fullcalendar/timegrid'; 
 import interactionPlugin from '@fullcalendar/interaction';
+import { SignInComponent } from '../sign-in/sign-in.component';
+import { RouterModule } from '@angular/router';
 
 interface CalendarEvent {
   title: string;
@@ -21,7 +23,7 @@ interface Task{
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, FullCalendarModule], // Ajout du module FullCalendar
+  imports: [CommonModule, FormsModule, FullCalendarModule, SignInComponent, RouterModule], 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -35,6 +37,7 @@ export class DashboardComponent {
     droppable: true, 
     events: [],};
 
+    
     addTask() {
       if (this.newTask.name.trim()) {
         this.tasks.push({ ...this.newTask }); 

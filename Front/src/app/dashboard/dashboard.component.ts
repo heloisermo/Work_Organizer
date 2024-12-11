@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 interface Task{
   name: string;
   completed: boolean;
+  date?: string; 
+  time?: string; 
 }
 
 @Component({
@@ -15,17 +17,14 @@ interface Task{
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  newTask: string = '';
+  newTask: Task = { name: '', completed: false };
   tasks: Task[] = [];
 
-  addTask(){
-    if(this.newTask.trim())
-    {
-      this.tasks.push({
-        name: this.newTask,
-        completed: false
-      });
-      this.newTask = '';
+
+  addTask() {
+    if (this.newTask.name.trim()) {
+      this.tasks.push({ ...this.newTask }); 
+      this.newTask = { name: '', completed: false }; 
     }
   }
 

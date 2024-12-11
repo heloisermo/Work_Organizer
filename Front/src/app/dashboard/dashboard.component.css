@@ -34,63 +34,71 @@ nav a {
     color: white;
     text-decoration: none;
     font-size: 1rem;
-    border: 1px solid white;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 nav a:hover {
-    background-color: #de8def;
+    background-color: #c370d3;
 }
 
 main {
-    flex: 1;
     display: flex;
     gap: 2rem;
     padding: 2rem;
+    flex-wrap: wrap;
 }
 
-.todo-section {
-    flex: 2;
+.todo-section, .schedule-section {
     background: white;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px;
 }
 
-.todo-section h2 {
+.todo-section h2, .schedule-section h2 {
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
-.todo-form {
+.form-group {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.todo-form input, .todo-form button {
+.form-group input {
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-.todo-form button {
+.form-group button {
+    padding: 0.5rem;
+    font-size: 1rem;
     background-color: #de8def;
     color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.todo-form button:hover {
-    background-color: #de8def;
+.form-group button:hover {
+    background-color: #c370d3;
 }
 
-.todo-list {
+.list-group {
+    margin-top: 1rem;
     list-style: none;
+    padding: 0;
 }
 
-.todo-list li {
+.list-group-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -98,37 +106,43 @@ main {
     border-bottom: 1px solid #ddd;
 }
 
-.todo-list li .actions button {
+.list-group-item .completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.list-group-item button {
     margin-left: 0.5rem;
-    background-color: #f44336;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
     color: white;
     border: none;
     border-radius: 4px;
-    padding: 0.3rem 0.5rem;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.todo-list li .actions button:hover {
+.list-group-item .btn-danger {
+    background-color: #f44336;
+}
+
+.list-group-item .btn-danger:hover {
     background-color: #e53935;
 }
 
-.schedule-section {
-    flex: 1;
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.list-group-item .btn-success {
+    background-color: #4caf50;
 }
 
-.schedule-section h2 {
-    margin-bottom: 1rem;
+.list-group-item .btn-success:hover {
+    background-color: #43a047;
 }
 
 .schedule {
     border: 1px solid #ddd;
     padding: 1rem;
     border-radius: 8px;
-    height: calc(100vh - 180px);
+    max-height: 500px;
     overflow-y: auto;
 }
 

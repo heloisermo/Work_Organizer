@@ -11,21 +11,49 @@
         <section class="todo-section">
             <h2>To-Do List</h2>
             <div class="form-group">
-                <input type="text" placeholder="Add a new task" [(ngModel)]="newTask" class="form-control">
-            <button (click)="addTask()" class="btn btn-primary mt-2">Add Task</button>
+                <input 
+                    type="text" 
+                    placeholder="Add a new task" 
+                    [(ngModel)]="newTask.name" 
+                    class="form-control">
+                <input 
+                    type="date" 
+                    [(ngModel)]="newTask.date" 
+                    class="form-control mt-2" 
+                    placeholder="Assign a day (optional)">
+                <input 
+                    type="time" 
+                    [(ngModel)]="newTask.time" 
+                    class="form-control mt-2" 
+                    placeholder="Assign a time (optional)">
+                <button 
+                    (click)="addTask()" 
+                    class="btn btn-primary mt-2">Add Task</button>
             </div>
             <ul class="list-group mt-3">
-                <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
-                    <span [class.completed]="task.completed">{{ task.name }}</span>
-                    <div>
-                        <button (click)="toggleTask(task)" class="btn btn-sm btn-success">
-                            {{ task.completed ? 'Undo' : 'Complete' }}
-                        </button>
-                        <button (click)="deleteTask(task)" class="btn btn-sm btn-danger">Delete</button>
+                <li 
+                    *ngFor="let task of tasks" 
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <input 
+                            type="checkbox" 
+                            [(ngModel)]="task.completed" 
+                            (change)="toggleTask(task)" 
+                            class="form-check-input me-2">
+                        <span [class.completed]="task.completed">
+                            {{ task.name }}
+                        </span>
+                        <small *ngIf="task.date || task.time" class="text-muted ms-3">
+                            {{ task.date ? task.date : '' }} {{ task.time ? task.time : '' }}
+                        </small>
                     </div>
+                    <button 
+                        (click)="deleteTask(task)" 
+                        class="btn btn-sm btn-danger">Delete</button>
                 </li>
             </ul>
         </section>
+        
 
         <section class="schedule-section">
             <h2>Planning</h2>

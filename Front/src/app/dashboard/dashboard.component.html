@@ -4,6 +4,7 @@
         <nav>
             <a href="#">Mes Projets Partagés</a>
             <a href="#">Modifier Mes Informations</a>
+            <a href="#">Se Déconnecter</a>
         </nav>
     </header>
 
@@ -56,19 +57,9 @@
         
 
         <section class="schedule-section">
-            <h2>Planning</h2>
-            <div class="schedule">
-                <div class="hour">08:00</div>
-                <div class="hour">09:00</div>
-                <div class="hour">10:00</div>
-                <div class="hour">11:00</div>
-                <div class="hour">12:00</div>
-                <div class="hour">13:00</div>
-                <div class="hour">14:00</div>
-                <div class="hour">15:00</div>
-                <div class="hour">16:00</div>
-                <div class="hour">17:00</div>
-                <div class="hour">18:00</div>
-            </div>
+            <div class="calendar-container">
+                <full-calendar [options]="calendarOptions"></full-calendar>
+              </div>
+              
         </section>
     </main>

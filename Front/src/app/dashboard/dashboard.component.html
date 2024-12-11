@@ -35,7 +35,12 @@
             <ul class="list-group mt-3">
                 <li 
                     *ngFor="let task of tasks" 
-                    class="list-group-item d-flex justify-content-between align-items-center">
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                    draggable="true" 
+                    [attr.data-task-name]="task.name" 
+                    (dragstart)="onDragStart($event, task)"
+                    (dragend)="onDragEnd($event)"
+                    >
                     <div class="d-flex align-items-center">
                         <input 
                             type="checkbox" 

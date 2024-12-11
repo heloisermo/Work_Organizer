@@ -92,3 +92,29 @@ main {
     background-color: #c370d3;
 }
 
+.list-group-item[draggable="true"] {
+    cursor: grab;
+  }
+  
+  .list-group-item[draggable="true"]:active {
+    cursor: grabbing;
+  }
+  
+  .fc-event {
+    background-color: #007bff !important;
+    color: #fff !important;
+  }
+  
+  .fc-event:hover {
+    cursor: pointer;
+  }
+  
+  .calendar-container {
+    margin-top: 20px;
+  }
+  
+  .todo-section {
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+  }
+   

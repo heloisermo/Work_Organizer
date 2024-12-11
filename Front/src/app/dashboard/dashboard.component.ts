@@ -27,6 +27,7 @@ interface Task{
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
+
 export class DashboardComponent {
   newTask: Task = { name: '', completed: false };
   tasks: Task[] = [];
@@ -34,9 +35,39 @@ export class DashboardComponent {
     plugins: [timeGridPlugin, interactionPlugin],
     initialView: 'timeGridDay',
     editable: true,
-    droppable: true, 
-    events: [],};
+    droppable: true,
+    dropAccept: ".list-group-item", 
+    events: [],
+    eventReceive : this.handleEventReceive.bind(this),};
 
+    onDragStart(event: DragEvent, task: Task) {
+      if (event.dataTransfer) {
+        event.dataTransfer.setData('text/plain', task.name); 
+        event.dataTransfer.effectAllowed = 'move'; 
+        console.log(`✅ Drag start: ${task.name}`);
+      }
+    }
+
+    onDragEnd(event: DragEvent) {
+      console.log('🛑 Drag ended', event);
+    }
+
+    handleEventReceive(event: any) {
+      const taskName = event.draggedEl.getAttribute('data-task-name'); 
+      console.log(`📦 Tâche reçue: ${taskName} à la date ${event.dateStr}`);
+    
+      if (taskName) {
+        const newEvent: CalendarEvent = {
+          title: taskName,
+          start: event.dateStr, 
+          allDay: true
+        };
+        this.calendarOptions.events = [...this.calendarOptions.events, newEvent];
+        event.event.remove();
+      } else {
+        console.error('❌ Impossible de récupérer le nom de la tâche');
+      }
+    }
     
     addTask() {
       if (this.newTask.name.trim()) {

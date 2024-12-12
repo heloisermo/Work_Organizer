@@ -22,6 +22,28 @@ async function select(query, params = []) {
       await client.end();
     }
   }
-  
-  module.exports = { select };
+  async function insert(query, params) {
+    const client = new Client({
+        user: 'postgres',
+        password: '123',
+        host: 'localhost',
+        port: 5432,
+        database: 'work_organizer',
+    });
+
+    await client.connect();
+
+    try {
+        const res = await client.query(query, params);
+        return res; 
+    } catch (err) {
+        console.error('Erreur d\'exécution de la requête', err);
+        throw err; 
+    } finally {
+        await client.end();
+    }
+}
+
+
+  module.exports = { select, insert };
   

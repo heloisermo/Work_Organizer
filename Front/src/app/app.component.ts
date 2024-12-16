@@ -5,11 +5,11 @@ import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { RouterModule, Routes } from '@angular/router';
 @Component({
   selector: 'app-root', 
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule ],
   templateUrl: './app.component.html', 
   styleUrls: ['./app.component.css'],
   providers: [ApiService, HttpClient]
@@ -20,7 +20,8 @@ export class AppComponent {
   users: any[] = [];
   email = '';
   password = '';
-  
+  pseudo = '';
+  name = '';
   ngOnInit() {
     this.addUser();
   }
@@ -37,7 +38,7 @@ export class AppComponent {
   }
   addUser() {
     if (this.email && this.password) {
-      const newUser = { email: this.email, password: this.password };
+      const newUser = { email: this.email, password: this.password, pseudo: this.pseudo, name: this.name };
       this.apiService.createUser(newUser).subscribe(
         (response) => {
           console.log('Utilisateur ajouté avec succès!', response);

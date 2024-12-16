@@ -23,7 +23,6 @@ export class AppComponent {
   pseudo = '';
   name = '';
   ngOnInit() {
-    this.addUser();
   }
 
   loadUsers() {
@@ -36,21 +35,6 @@ export class AppComponent {
       }
     );
   }
-  addUser() {
-    if (this.email && this.password) {
-      const newUser = { email: this.email, password: this.password, pseudo: this.pseudo, name: this.name };
-      this.apiService.createUser(newUser).subscribe(
-        (response) => {
-          console.log('Utilisateur ajouté avec succès!', response);
-          this.loadUsers();  // Recharge les utilisateurs après ajout
-        },
-        (error) => {
-          console.log('Erreur lors de l\'ajout de l\'utilisateur', error);
-        }
-      );
-    } else {
-      console.log('Email et mot de passe requis.');
-    }
-  }
+  
 
 }

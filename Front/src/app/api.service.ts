@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { log } from 'console';
 
 @Injectable({
   providedIn: 'root', 
@@ -19,5 +20,10 @@ export class ApiService {
         return this.http.post(this.apiUrl_insert, user);
     }
     
-
+    connectUser(user: any)
+    {
+        const apiUrl_connect = 'http://localhost:3000/users/' + user.email;
+        console.log(apiUrl_connect);
+        return this.http.get(apiUrl_connect, user);
+    }
 }

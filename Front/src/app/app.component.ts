@@ -1,21 +1,29 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { RouterModule } from '@angular/router';
-import { routes } from './app.routes';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { ApiService } from './api.service';
+import {HttpClient} from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { UserInformationComponent } from './user-informations/user-informations.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root', 
   standalone: true,
-  imports: [RouterOutlet, RouterModule, DashboardComponent, FormsModule, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [CommonModule],
+  templateUrl: './app.component.html', 
+  styleUrls: ['./app.component.css'],
+  providers: [ApiService, HttpClient]
 })
 export class AppComponent {
+  constructor(private apiService: ApiService) {}
   title = 'Front';
+  users: any[] = [];
+  
+  ngOnInit() {
+      this.apiService.getUsers().subscribe(
+      (response: any) => { this.users = response; },
+      (error) => { console.log(error); }
+      
+    );
+    console.log(this.users);
+  }
+
 }

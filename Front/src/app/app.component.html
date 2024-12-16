@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div *ngIf="users && users.length > 0">
+    <ul>
+      <li *ngFor="let user of users">
+        <strong>ID:</strong> {{ user.id }} <br>
+        <strong>Email:</strong> {{ user.email }} <br>
+        <strong>Password:</strong> {{ user.password }}  <!-- Vous pouvez omettre le mot de passe pour la sécurité -->
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!users || users.length === 0">
+    <p>Aucun utilisateur trouvé.</p>
+  </div>
+  

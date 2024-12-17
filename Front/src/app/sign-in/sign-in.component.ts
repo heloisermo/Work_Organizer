@@ -30,19 +30,23 @@ export class SignInComponent {
       }
     );
   }
+
   connectUser() {
-    if (this.email && this.password ) {
+    if (this.email && this.password) {
       const user = { email: this.email, password: this.password };
       this.apiService.connectUser(user).subscribe(
         (response) => {
           console.log('Connexion réussie', response);
-          this.loadUsers();  // Recharge les utilisateurs après ajout
+          this.loadUsers();
         },
         (error) => {
           console.log('Connexion refusée', error);
+          window.alert('Email ou mot de passe incorrect.');
         }
       );
     } else {
       console.log('Email et mot de passe requis.');
+      window.alert('Email et mot de passe requis.');
     }
-  }}
+  }
+}

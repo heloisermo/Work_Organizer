@@ -37,14 +37,16 @@ export class SignUpComponent {
       this.apiService.createUser(newUser).subscribe(
         (response) => {
           console.log('Utilisateur ajouté avec succès!', response);
-          this.loadUsers();  // Recharge les utilisateurs après ajout
+          this.loadUsers(); 
         },
         (error) => {
           console.log('Erreur lors de l\'ajout de l\'utilisateur', error);
+          window.alert('Il y a déjà un utilisateur avec cet email.');
         }
       );
     } else {
       console.log('Email et mot de passe requis.');
+      window.alert('Email et mot de passe requis.');
     }
   }
 }

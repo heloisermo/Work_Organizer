@@ -12,17 +12,17 @@ async function select(query, params = []) {
       });
     try {
       await client.connect();
-      const result = await client.query('SELECT * FROM users');
+      const result = await client.query(query, params);
       return result.rows;
-
     } catch (error) {
-      console.error('Error executing SELECT query:', error);
+      console.error('Error executing SELECT query: ', query, error);
       throw error;
     } finally {
       await client.end();
     }
   }
-  async function insert(query, params) {
+  
+async function insert(query, params) {
     const client = new Client({
         user: 'postgres',
         password: '123',
@@ -37,7 +37,7 @@ async function select(query, params = []) {
         const res = await client.query(query, params);
         return res; 
     } catch (err) {
-        console.error('Erreur d\'exécution de la requête', err);
+        console.error('Erreur d\'exécution de la requête', query, err);
         throw err; 
     } finally {
         await client.end();

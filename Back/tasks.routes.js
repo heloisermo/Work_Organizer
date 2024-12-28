@@ -33,6 +33,15 @@ router.post('/update', jsonParser, async (req, res) => {
             res.status(500).json({ error: 'Erreur lors de la mise à jour de la tâche' });
     }
 });
-    
 
+router.post('/del', jsonParser, async (req, res) => {
+    try {
+        const { id_task } = req.body;
+        await tasks.delete_task(id_task);
+        res.status(200).json({ message: 'Tâche supprimée avec succès' });
+    } catch (error) {
+        console.error('Erreur lors de la suppression de la tâche :', error);
+        res.status(500).json({ error: 'Erreur lors de la suppression de la tâche' });
+    }
+});
 module.exports = router;

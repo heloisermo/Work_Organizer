@@ -63,6 +63,45 @@ async function update(query, params) {
       await client.end();
   }
 }
+async function del(query, params) {
+  const client = new Client({
+    user: 'postgres',
+    password: '123',
+    host: 'localhost',
+    port: 5432,
+    database: 'work_organizer',
+  });
 
-  module.exports = { select, insert, update };
+  try {
+    await client.connect();
+    const res = await client.query(query, params);
+    return res;
+  } catch (err) {
+    console.error('Erreur d\'exécution de la requête DELETE:', query, err);
+    throw err;
+  } finally {
+    await client.end();
+  }
+}
+async function updateUser(query, params) {
+  const client = new Client({
+    user: 'postgres',
+    password: '123',
+    host: 'localhost',
+    port: 5432,
+    database: 'work_organizer',
+  });
+  try {
+    await client.connect();
+    const res = await client.query(query, params);
+    return res;
+  } catch (err) {
+    console.error('Erreur d\'exécution de la requête update:', query, err);
+    throw err;
+  } finally {
+    await client.end();
+  }
+}
+
+module.exports = { select, insert, update, del, updateUser };
   

@@ -47,5 +47,24 @@ async function connect_user(email) {
     }
 }
 
-module.exports = { list, create_user, connect_user };
+async function update_user(id, email, password, pseudo, name) {
+    try {
+        console.log(id)
+        const query = 'UPDATE users SET email = $2, password = $3, pseudo = $4, name = $5 WHERE id = $1 RETURNING *';
+        const values = [id, email, password, pseudo, name];
+        
+        const res = await db.update(query, values);
+        
+        if (res.rows.length > 0) {
+            return res.rows[0];
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (err) {
+        console.error('Erreur lors de la mise à jour de l\'utilisateur', err);
+        throw err;
+    }
+}
+
+module.exports = { list, create_user, connect_user, update_user };
 

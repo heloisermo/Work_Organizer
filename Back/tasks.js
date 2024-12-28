@@ -36,4 +36,22 @@ async function update_task(id_task, status) {
         throw err;
     }
 }
-module.exports = { list, create_task, update_task };
+
+async function delete_task(id_task)
+{
+    try {
+        const query = 'DELETE FROM tasks WHERE id_task = $1 RETURNING *';
+        const values = [id_task];
+        const res = await db.del(query, values);
+        if (res.rows.length === 0) {
+            console.log(`Aucune tâche trouvée avec l'ID: ${id_task}`);
+            throw new Error('Tâche non trouvée');
+        }
+        console.log('Deleted task with ID', id_task);
+        return res.rows[0];
+    } catch (err) {
+        console.error('Erreur lors de la suppression de la tâche', err);
+        throw err;
+    }
+}
+module.exports = { list, create_task, update_task, delete_task };

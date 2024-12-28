@@ -32,4 +32,21 @@ router.get('/:email', async (req, res) => {
     }
 });
 
+
+router.post('/update/:id', jsonParser, async (req, res) => {
+    const { id, email, password, pseudo, name } = req.body;
+
+    if (!id) {
+        return res.json({ message: 'ID est requis' });
+    }
+
+    const updatedUser = await users.update_user(id, email, password, pseudo, name);
+    console.log('users.routes.js', '/update/:id', id, email, password, pseudo, name)
+    if (updatedUser) {
+        return res.json(updatedUser);
+    } else {
+        return res.json({ message: 'Utilisateur non trouvé ou mise à jour échouée' });
+    }
+});
+
 module.exports = router;

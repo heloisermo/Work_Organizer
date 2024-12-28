@@ -11,8 +11,10 @@ router.get('/list', async (req, res) => {
 
 router.post('/create', jsonParser, async (req, res) => {
     try {
-        const { contenu, date, id_client } = req.body;
-        const newTask = await tasks.create_task(contenu, date, id_client);
+        console.log('req',req.body)
+        const { title, date, id_client, status } = req.body;
+        const newTask = await tasks.create_task(title, date, id_client, status);
+        console.log('tache créée : status', status)
         res.status(201).json(newTask); 
     } catch (error) {
         console.error('Erreur lors de la création de la tâche :', error);

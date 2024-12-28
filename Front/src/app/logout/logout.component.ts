@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { removeCurrentUser } from '../sign-in/sign-in.component';
+import { removeCurrentUser } from '../helpers/current-user';
 
 @Component({
   selector: 'app-logout',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { log } from 'console';
 import { Observable } from 'rxjs';
-import { User } from './sign-in/sign-in.component';
+import { User } from './helpers/current-user';
 
 enum TaskStatus {
     ToDo,

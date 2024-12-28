@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrls: ['./app.component.css'],
   providers: [ApiService, HttpClient]
 })
+
 export class AppComponent {
   constructor(private apiService: ApiService) {}
   title = 'Front';

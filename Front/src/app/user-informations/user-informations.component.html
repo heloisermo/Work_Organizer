@@ -2,7 +2,6 @@
     <h1>Informations Utilisateur</h1>
     <nav>
       <a href="#">Tableau de Bord</a>
-      <a routerLink="/dashboard">Retour au Dashboard</a>
       <a routerLink="/sign-in">Se Déconnecter</a>
     </nav>
   </header>
@@ -11,28 +10,28 @@
     <section class="user-info-section">
       <h2>Modifier vos informations</h2>
       
-      <form (submit)="updateUserInfo()" class="user-info-form">
+      <form (submit)="saveUserInfo()" class="user-info-form">
         
         <!-- Pseudo -->
         <div class="form-group">
-          <label for="username">Pseudo</label>
+          <label for="pseudo">Pseudo</label>
           <input 
             type="text" 
-            id="username" 
-            [(ngModel)]="userInfo.username" 
-            name="username" 
+            id="pseudo" 
+            [(ngModel)]="userInfo.pseudo" 
+            name="pseudo" 
             class="form-control" 
             placeholder="Entrez votre pseudo">
         </div>
   
         <!-- Prénom -->
         <div class="form-group">
-          <label for="firstname">Prénom</label>
+          <label for="name">Prénom</label>
           <input 
             type="text" 
-            id="firstname" 
-            [(ngModel)]="userInfo.firstname" 
-            name="firstname" 
+            id="name" 
+            [(ngModel)]="userInfo.name" 
+            name="name" 
             class="form-control" 
             placeholder="Entrez votre prénom">
         </div>
@@ -48,10 +47,22 @@
             class="form-control" 
             placeholder="Entrez un nouveau mot de passe">
         </div>
-  
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="userInfo.email" 
+            name="email" 
+            class="form-control" 
+            placeholder="Entrez votre email">
+        </div>
+        
         <!-- Bouton de validation -->
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
-      </form>
+    
+          </form>
   
     </section>
   </main>

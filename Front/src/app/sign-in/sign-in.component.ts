@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ApiService } from '../api.service';
+import { setCurrentUser } from '../helpers/current-user';
+
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -13,7 +15,7 @@ import { ApiService } from '../api.service';
   providers: [ApiService]
 })
 export class SignInComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
   users: any[] = [];
   email: string = '';
   password: string = '';
@@ -34,16 +36,18 @@ export class SignInComponent {
   connectUser() {
     if (this.email && this.password) {
       const user = { email: this.email, password: this.password };
-      this.apiService.connectUser(user).subscribe(
-        (response) => {
-          console.log('Connexion réussie', response);
+      this.apiService.connectUser(user).subscribe({
+        next: (user) => {
+          console.log('Connexion réussie', user);
+          setCurrentUser(user);
+          this.router.navigate(['']);
           this.loadUsers();
         },
-        (error) => {
+        error: (error) => {
           console.log('Connexion refusée', error);
           window.alert('Email ou mot de passe incorrect.');
         }
-      );
+      });
     } else {
       console.log('Email et mot de passe requis.');
       window.alert('Email et mot de passe requis.');

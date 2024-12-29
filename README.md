@@ -124,37 +124,51 @@ The dashboard is the central interface for managing tasks and personal informati
 
 
 ### Steps
-1. Clone the repository:
+
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/heloisermo/Work_Organizer
    cd Work_Organizer
-2. Install BackEnd dependances
+   ```
+
+2. **Install BackEnd dependencies:**
    ```bash
    cd Back
    npm install
-   
-3. Configure Database
-Here are the guidelines for PostgreSql and PgAdmin4:
-- Create a database in PgAdmin4
-- Right Click on it and select "restore"
-- Select the file "work_organizer_backup" in the root folder
+   ```
 
-4.  Run Back End:
+3. **Configure the Database:**
+   Here are the guidelines for PostgreSQL and PgAdmin4:
+   - Create a database in PgAdmin4 and name it `work_organizer`.
+   - Right-click on the database and select "Restore."
+   - Select the file `work_organizer_backup` located in the root folder.
+   - Make sure your database configuration matches the following:
+     ```javascript
+     user: 'postgres',
+     password: '123',
+     host: 'localhost',
+     port: 5432,
+     database: 'work_organizer'
+     ```
+
+4. **Run the BackEnd:**
    ```bash
-     cd Back
-     npm start
-```
+   cd Back
+   npm start
+   ```
 
-5.  Install FrontEnd dependances:
+5. **Install FrontEnd dependencies:**
    ```bash
    cd ../Front
    npm install
-```
-6.  Run Front End
+   ```
+
+6. **Run the FrontEnd:**
    ```bash
    npm start
-```
-7.  Navigate to local host
-http://localhost:4200
+   ```
 
+7. **Navigate to localhost:**
+   Open your browser and navigate to:
+   [http://localhost:4200](http://localhost:4200)
 

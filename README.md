@@ -1,7 +1,7 @@
 # Task Organizer
 
 ## Demo
-Please wath the demo video on the DevinciLearning deposit (too big to be put here)
+Please watch the demo video on the DevinciLearning deposit (too big to be uploaded here)
 
 ## Overview
 

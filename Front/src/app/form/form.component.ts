@@ -7,18 +7,6 @@ import { ApiService } from '../api.service';
 import { Interface } from 'readline';
 import { getCurrentUser } from '../helpers/current-user';
 
-interface CalendarEvent {
-    title: string;
-    start: string;
-    allDay?: boolean;
-  }
-  
-  //interface Task{
-    /*name: string;
-    completed: boolean;
-    date?: string; 
-    time?: string; 
-  }*/
  interface Task{
     id_task?: number;
     title: string;
@@ -95,7 +83,12 @@ export class FormComponent {
     }
 
     showTask() {
-        this.apiService.listTask().subscribe({
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+            console.error('No current user.');
+            return;
+        }
+        this.apiService.listTask(currentUser.id).subscribe({
             next: (tasks) => {
                 tasks.forEach(task => console.log('Tâche:', task));
                 this.tasks = tasks;

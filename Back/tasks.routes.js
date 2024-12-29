@@ -4,10 +4,17 @@ const router = express.Router();
 var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json();
 
-router.get('/list', async (req, res) => {
-    const tasklist = await tasks.list();
+router.get('/list/:id_client', async (req, res) => {
+    try {
+        const { id_client } = req.params;
+        const tasklist = await tasks.list(id_client);
+        console.log('task list', tasklist)
         res.json(tasklist);
-    });
+    } catch (error) {
+        console.error('Erreur lors de la récupération de la liste des tâches :', error);
+        res.status(500).json({ error: 'Erreur lors de la récupération de la liste des tâches' });
+    }
+});
 
 router.post('/create', jsonParser, async (req, res) => {
     try {

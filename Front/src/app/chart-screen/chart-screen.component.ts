@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { getCurrentUser, setCurrentUser } from '../helpers/current-user';
 
 interface Task {
     id_task?: number;
@@ -32,7 +33,7 @@ export class ChartScreenComponent {
             type: 'pie'
         },
         title: {
-            text: 'Répartition des tâches'
+            text: ''
         },
         series: this.formatSeries(0, 0, 0),
     };
@@ -42,11 +43,15 @@ export class ChartScreenComponent {
       }
 
     loadTasks() {
-        this.apiService.listTask().subscribe({
+        const currentUser = getCurrentUser();
+        if (!currentUser)
+        {
+            console.log('Utilisateur non trouvé')
+            return;
+        }
+        this.apiService.listTask(currentUser.id).subscribe({
             next: (tasks: Task[]) => {
-                // this.tasks = tasks;
                 console.log('taches', this.tasks);
-                // this.createChart();
                 const noOfTodos = tasks.filter((task) => task.status == 'todo').length;
                 const noOfInProgress = tasks.filter((task) => task.status == 'in-progress').length;
                 const noOfDones = tasks.filter((task) => task.status == 'done').length;
@@ -66,9 +71,9 @@ formatSeries(accomplished: number, todo: number, inprogres: number): Highcharts.
             name: 'Tâches',
             type: 'pie',
             data: [
-                { name: 'Accomplies', y: accomplished, color: '#4CAF50' },
-                { name: 'En cours', y: inprogres, color: '#FFC107' },
-                { name: 'À faire', y: todo, color: '#F44336' }
+                { name: 'Done', y: accomplished, color: '#4CAF50' },
+                { name: 'In Progress', y: inprogres, color: '#FFC107' },
+                { name: 'To do', y: todo, color: '#F44336' }
             ]
         }
     ]

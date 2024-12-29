@@ -1,8 +1,17 @@
 const { Client } = require('pg');
 const db = require('./db.js');
 
-async function list() {
-    return await db.select('SELECT * FROM tasks')
+async function list(id_user) {
+    try {
+        const query = 'SELECT * FROM tasks WHERE id_client = $1';
+        const values = [id_user];
+        const res = await db.select(query, values);
+        console.log('res tasks ', res)
+        return res;
+    } catch (err) {
+        console.error('Erreur lors de la récupération des tâches', err);
+        throw err;
+    }
 }
 
 async function create_task(title, date, id_client, status) {

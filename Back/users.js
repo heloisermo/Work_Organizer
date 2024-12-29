@@ -13,9 +13,9 @@ async function create_user(email, password, pseudo, name) {
         const checkValues = [email];
         const checkRes = await db.select(checkQuery, checkValues);
 
-        if (checkRes.rows.length > 0) {
+        /*if (checkRes.rows.length > 0) {
             throw new Error('Email already in use');
-        }
+        }*/
 
         console.log('post');
         const query = 'INSERT INTO users (email, password, pseudo, name) VALUES ($1, $2, $3, $4) RETURNING *';

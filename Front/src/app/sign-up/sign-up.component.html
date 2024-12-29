@@ -23,6 +23,10 @@
 
         
         <button (click)="addUser()">S'inscrire</button>
+        <div *ngIf="created">
+            <p>Inscription réussie ! Redirection en cours...</p>
+            <meta http-equiv="refresh" content="2;url=/sign-in">
+        </div>
     </form>
 
     <button  [routerLink]="['/sign-in']">

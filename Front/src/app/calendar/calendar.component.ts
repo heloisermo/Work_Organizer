@@ -4,6 +4,7 @@ import { CalendarOptions } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid'; 
 import interactionPlugin from '@fullcalendar/interaction';
 import { ApiService } from '../api.service';
+import { getCurrentUser, setCurrentUser } from '../helpers/current-user';
 
 interface Task {
     id?: number;
@@ -27,7 +28,13 @@ export class CalendarComponent {
         this.refresh_events();
       }
     refresh_events() {
-        this.apiService.listTask().subscribe((tasks: Task[]) => {
+        const currentUser = getCurrentUser();
+        if (!currentUser)
+        {
+            console.log('Utilisateur non trouvé')
+            return;
+        }
+        this.apiService.listTask(currentUser.id).subscribe((tasks: Task[]) => {
             this.calendarOptions = {
                 ...this.calendarOptions, 
                 events: tasks.map(task => ({

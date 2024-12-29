@@ -20,7 +20,7 @@ export class SignUpComponent {
   password: string = '';
   pseudo: string = '';
   firstname: string = '';
-
+  created : boolean = false;
   loadUsers() {
     this.apiService.getUsers().subscribe(
       (response: any) => {
@@ -38,9 +38,10 @@ export class SignUpComponent {
         (response) => {
           console.log('Utilisateur ajouté avec succès!', response);
           this.loadUsers(); 
+          this.created = true;
         },
         (error) => {
-          console.log('Erreur lors de l\'ajout de l\'utilisateur', error);
+          console.log('Erreur lors de l\'ajout de l\'utilisateur', error, this.email);
           window.alert('Il y a déjà un utilisateur avec cet email.');
         }
       );

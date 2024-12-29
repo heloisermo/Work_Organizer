@@ -1,14 +1,14 @@
 <header>
-    <h1>Informations Utilisateur</h1>
+    <h1>Personal Informations</h1>
     <nav>
-      <a href="#">Tableau de Bord</a>
-      <a routerLink="/sign-in">Se Déconnecter</a>
+      <a href="#">Dashboard</a>
+      <a routerLink="/sign-in">Log Out</a>
     </nav>
   </header>
   
   <main>
     <section class="user-info-section">
-      <h2>Modifier vos informations</h2>
+      <h2>Update informations</h2>
       
       <form (submit)="saveUserInfo()" class="user-info-form">
         
@@ -23,10 +23,9 @@
             class="form-control" 
             placeholder="Entrez votre pseudo">
         </div>
-  
-        <!-- Prénom -->
+
         <div class="form-group">
-          <label for="name">Prénom</label>
+          <label for="name">Name</label>
           <input 
             type="text" 
             id="name" 
@@ -36,9 +35,8 @@
             placeholder="Entrez votre prénom">
         </div>
   
-        <!-- Mot de passe -->
         <div class="form-group">
-          <label for="password">Mot de passe</label>
+          <label for="password">Password</label>
           <input 
             type="password" 
             id="password" 
@@ -47,7 +45,7 @@
             class="form-control" 
             placeholder="Entrez un nouveau mot de passe">
         </div>
-        <!-- Email -->
+
         <div class="form-group">
           <label for="email">Email</label>
           <input 
@@ -59,8 +57,7 @@
             placeholder="Entrez votre email">
         </div>
         
-        <!-- Bouton de validation -->
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     
           </form>
   

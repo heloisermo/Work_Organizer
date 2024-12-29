@@ -52,9 +52,9 @@ export class ApiService {
         return this.http.post(apiUrl_insert, task);
     }
 
-    listTask(): Observable<Task[]>
+    listTask(id_client: number): Observable<Task[]>
     {
-        const apiUrl_list = 'http://localhost:3000/tasks/list';
+        const apiUrl_list = 'http://localhost:3000/tasks/list/'+id_client;
         return this.http.get<Task[]>(apiUrl_list);
     }
 
@@ -71,5 +71,11 @@ export class ApiService {
     updateUserInfo(user: Partial<User>): Observable<any> {
         const apiUrl_update = 'http://localhost:3000/users/update/'+ user.id;
         return this.http.post(apiUrl_update, user);
+    }
+
+    shareTask(email : string, title : string) : Observable<any>
+    {
+        const apiUrl_share = 'http://localhost:3000/shared-tasks/create';
+        return this.http.post(apiUrl_share, { email, title})
     }
 }

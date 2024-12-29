@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserInformationComponent } from './user-informations/user-informations.component';
 import { AuthGuard } from './auth-guard.component';
 import { LogoutComponent } from './logout/logout.component';
+import { SharedTasksComponent } from './shared-tasks/shared-tasks.component';
 
 
 export const routes: Routes = [
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path : 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
     {path : 'sign-up', component: SignUpComponent},
     {path : 'user-informations', component: UserInformationComponent},
+    {path : 'shared-tasks', component: SharedTasksComponent},
     {path : '', component: DashboardComponent, canActivate: [AuthGuard]},
 ];

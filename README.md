@@ -1,5 +1,8 @@
 # Task Organizer
 
+## Demo
+Please wath the demo video on the DevinciLearning deposit (too big to be put here)
+
 ## Overview
 
 Work Organizer is a simple and intuitive web application designed to help users manage their daily tasks effectively. It provides users with the tools to create, track, and organize their tasks in a user-friendly dashboard. The application includes a login system, a task management interface, a calendar for dated tasks, and a pie chart for task status visualization.

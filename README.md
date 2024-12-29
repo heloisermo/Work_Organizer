@@ -134,8 +134,10 @@ The dashboard is the central interface for managing tasks and personal informati
    npm install
    
 3. Configure PostgreSQL
-   ```bash
-   psql -U postgres -d work_organizer -f work_organizer.sql
+Create a database in PgAdmin4
+Right Click on it and select "restore"
+Select the file "work_organizer_backup" in the root folder
+
 4.  Run Back End:
    ```bash
      cd Back

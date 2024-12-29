@@ -129,6 +129,7 @@ The dashboard is the central interface for managing tasks and personal informati
    ```bash
    cd Back
    npm install
+   
 3. Configure PostgreSQL
    ```bash
    psql -U postgres -d work_organizer -f work_organizer.sql
@@ -136,7 +137,7 @@ The dashboard is the central interface for managing tasks and personal informati
    ```bash
      cd Back
      npm start
-5. Install FrontEnd dependances:
+5.  Install FrontEnd dependances:
    ```bash
    cd ../Front
    npm install
